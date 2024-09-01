@@ -3,7 +3,13 @@ import { useEffect, useRef } from "react";
 import Button from "@/components/Button";
 import starBg from "@/assets/stars.png";
 import Gridlines from "@/assets/grid-lines.png";
-import { motion, useMotionTemplate, useScroll, useTransform, useMotionValue } from "framer-motion";
+import {
+  motion,
+  useMotionTemplate,
+  useScroll,
+  useTransform,
+  useMotionValue,
+} from "framer-motion";
 
 export const CallToAction = () => {
   const sectionRef = useRef<HTMLDivElement>(null);

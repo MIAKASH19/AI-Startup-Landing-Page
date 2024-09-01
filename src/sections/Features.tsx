@@ -3,7 +3,6 @@ import {
   DotLottieCommonPlayer,
   DotLottiePlayer,
 } from "@dotlottie/react-player";
-import Image from "next/image";
 import productImage from "@/assets/product-image.png";
 import { ComponentPropsWithoutRef, useEffect, useRef, useState } from "react";
 import {
@@ -54,31 +53,34 @@ const FeaturesTab = (
   const maskImage = useMotionTemplate`radial-gradient(80px 80px at ${xPercent}% ${yPercent}%, black, transparent)`;
 
   useEffect(() => {
-    if (!tabRef.current || !props.selected) return;
+    if (typeof window !== "undefined") {
+      // Code that uses `window` or `document` here
+      if (!tabRef.current || !props.selected) return;
 
-    xPercent.set(0);
-    yPercent.set(0);
-    const { height, width } = tabRef.current.getBoundingClientRect();
-    const circumstence = height * 2 + width * 2;
+      xPercent.set(0);
+      yPercent.set(0);
+      const { height, width } = tabRef.current.getBoundingClientRect();
+      const circumstence = height * 2 + width * 2;
 
-    const times = [
-      0,
-      width / circumstence,
-      (width + height) / circumstence,
-      (width * 2 + height) / circumstence,
-      1,
-    ];
+      const times = [
+        0,
+        width / circumstence,
+        (width + height) / circumstence,
+        (width * 2 + height) / circumstence,
+        1,
+      ];
 
-    const options: ValueAnimationTransition = {
-      times,
-      duration: 4,
-      repeat: Infinity,
-      ease: "linear",
-      repeatType: "loop",
-    };
-    animate(xPercent, [0, 100, 100, 0, 0], options);
-    animate(yPercent, [0, 0, 100, 100, 0], options);
-  }, [props.selected]);
+      const options: ValueAnimationTransition = {
+        times,
+        duration: 4,
+        repeat: Infinity,
+        ease: "linear",
+        repeatType: "loop",
+      };
+      animate(xPercent, [0, 100, 100, 0, 0], options);
+      animate(yPercent, [0, 0, 100, 100, 0], options);
+    }
+  }, [props.selected, xPercent, yPercent]);
 
   const handleTabHover = () => {
     if (dotlottieRef.current === null) return;
@@ -127,18 +129,30 @@ export const Features = () => {
   const backgroundSize = useMotionTemplate`${backgroundSizeX}%`;
 
   const handleSelectedTab = (index: number) => {
-    setSelected(index)
+    setSelected(index);
 
     const animateOptions: ValueAnimationTransition = {
       duration: 2,
       ease: "easeInOut",
-    }
-    animate(backgroundSizeX, [backgroundSizeX.get(), 100, tabs[index].backgroundSizeX],animateOptions)
-    
-    animate(backgroundPositionX, [backgroundPositionX.get(), 100, tabs[index].backgroundPositionX],animateOptions)
-    
-    animate(backgroundPositionY, [backgroundPositionY.get(), 100, tabs[index].backgroundPositionY],animateOptions)
-  }
+    };
+    animate(
+      backgroundSizeX,
+      [backgroundSizeX.get(), 100, tabs[index].backgroundSizeX],
+      animateOptions
+    );
+
+    animate(
+      backgroundPositionX,
+      [backgroundPositionX.get(), 100, tabs[index].backgroundPositionX],
+      animateOptions
+    );
+
+    animate(
+      backgroundPositionY,
+      [backgroundPositionY.get(), 100, tabs[index].backgroundPositionY],
+      animateOptions
+    );
+  };
 
   return (
     <section className="py-20 md:py-24 ">

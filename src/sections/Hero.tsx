@@ -106,7 +106,7 @@ export const Hero = () => {
           AI SEO
         </h1>
         <p className="text-lg  mt-5 text-white/70 text-center md:text-xl max-w-xl mx-auto">
-          Elevate your site's visibility effortlessly with AI, where smart
+          Elevate your sites visibility effortlessly with AI, where smart
           technology meets user-friendly SEO tools.
         </p>
         <div className="mt-5 flex justify-center">
