@@ -22,6 +22,14 @@ export const Hero = () => {
         backgroundImage: `url(${starBg.src})`,
         backgroundPositionY,
       }}
+      animate={{
+        backgroundPositionX: starBg.width,
+      }}
+      transition={{
+        duration: 120,
+        ease: "linear",
+        repeat: Infinity,
+      }}
     >
       <div className="absolute inset-0 bg-[radial-gradient(75%_75%_at_center_center,rgb(140,69,255,.5)_15%,rgb(14,0,36,.5)_78%,transparent)]"></div>
 
