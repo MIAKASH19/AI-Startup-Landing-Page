@@ -54,7 +54,7 @@ export const Testimonials = () => {
                 repeat: Infinity,
                 ease: "linear",
               }} className="flex gap-5 flex-none -translate-x-1/2">
-            {[...testimonials, ...testimonials].map((testimonial,index) => (
+            {[...testimonials, ...testimonials].map((testimonial, index) => (
               <div
                 key={index}
                 className="border border-white/15 md:p-10 p-6 rounded-lg bg-[linear-gradient(to_bottom_left,rgb(140,69,255,.4),black)] max-w-xs md:max-w-md flex-none"
