@@ -1,3 +1,4 @@
+"use client"
 import acmeLogo from "@/assets/logo-acme.png";
 import apexLogo from "@/assets/logo-apex.png";
 import celestialLogo from "@/assets/logo-celestial.png";
